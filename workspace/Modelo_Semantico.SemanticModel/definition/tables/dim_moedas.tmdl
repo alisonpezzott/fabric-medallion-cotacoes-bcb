@@ -1,11 +1,11 @@
 table dim_moedas
-	lineageTag: 202fb910-060f-46a2-b772-2b946393551e
+	lineageTag: d4ee8b4f-c249-43f9-8f7b-090afc369b5d
 	sourceLineageTag: [dbo].[dim_moedas]
 
 	column MoedaNome
 		dataType: string
 		sourceProviderType: varchar(8000)
-		lineageTag: 1149f9c9-64a2-41a5-8102-8511857cc5f5
+		lineageTag: af77807c-5697-4e8d-8b8f-844f8de981f5
 		sourceLineageTag: MoedaNome
 		summarizeBy: none
 		sourceColumn: MoedaNome
@@ -15,7 +15,7 @@ table dim_moedas
 	column Moeda
 		dataType: string
 		sourceProviderType: varchar(8000)
-		lineageTag: ea1b60c2-a3c3-4546-8831-7c120dcb9b5d
+		lineageTag: fe17ac20-dbbc-477e-8a5f-7a012f6cf4fb
 		sourceLineageTag: Moeda
 		summarizeBy: none
 		sourceColumn: Moeda

@@ -1,4 +1,5 @@
-relationship ddba61e3-0b7e-81f8-ee33-6bf2986a90ba
+relationship 4dd37a6e-5c4d-2d5d-fbae-2b60a020f0bf
+	relyOnReferentialIntegrity
 	fromColumn: fact_cotacoes.Moeda
 	toColumn: dim_moedas.Moeda
 

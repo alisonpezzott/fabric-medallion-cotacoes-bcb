@@ -8,18 +8,18 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "9a6b8d46-0684-4a94-b242-f24bf9d41a82",
+# META       "default_lakehouse": "9da8f864-fec9-4557-9ac5-06ee7c35f411",
 # META       "default_lakehouse_name": "Lakehouse_Silver",
-# META       "default_lakehouse_workspace_id": "4bfae9a9-f6fb-439e-95c0-acae90efcb15",
+# META       "default_lakehouse_workspace_id": "43fc4b91-88cc-4d70-a8ad-8cba40bbf749",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3"
+# META           "id": "b8fdb39a-0195-4c04-acc0-c8748dd9395f"
 # META         },
 # META         {
-# META           "id": "9a6b8d46-0684-4a94-b242-f24bf9d41a82"
+# META           "id": "9da8f864-fec9-4557-9ac5-06ee7c35f411"
 # META         },
 # META         {
-# META           "id": "460cfafc-e75c-4d4d-8b18-90e555066014"
+# META           "id": "65813ff8-3f08-4f1d-830c-63609257a8da"
 # META         }
 # META       ]
 # META     }
@@ -28,17 +28,12 @@
 
 # CELL ********************
 
-# Endereços dos lakehouses
-workspace_id = "Medallion_BCB"
-lake_bronze = "Lakehouse_Bronze.Lakehouse"
-lake_silver = "Lakehouse_Silver.Lakehouse" 
-
-prefix = "abfss://"
-mid = "@onelake.dfs.fabric.microsoft.com/"
-
-path_bronze_files_novos = f"{prefix}{workspace_id}{mid}{lake_bronze}/Files/Cotacoes/Novos/"  
-
-path_bronze_files_carregados = f"{prefix}{workspace_id}{mid}{lake_bronze}/Files/Cotacoes/Carregados/" 
+from pyspark.sql import *
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+import requests
+import json
+from datetime import *
 
 # METADATA ********************
 
@@ -50,7 +45,7 @@ path_bronze_files_carregados = f"{prefix}{workspace_id}{mid}{lake_bronze}/Files/
 # CELL ********************
 
 # Leitura dos arquivos Parquet na pasta Novos
-df = spark.read.parquet(f"{path_bronze_files_novos}*.parquet")
+df = spark.read.parquet(f"abfss://Medallion_BCB@onelake.dfs.fabric.microsoft.com/Lakehouse_Bronze.Lakehouse/Files/Cotacoes/Novos/*.parquet")
 
 df.createOrReplaceTempView("df")
 
@@ -143,8 +138,8 @@ spark.sql("""
 
 from notebookutils import mssparkutils
 
-origem = path_bronze_files_novos 
-destino = path_bronze_files_carregados
+origem = f"abfss://Medallion_BCB@onelake.dfs.fabric.microsoft.com/Lakehouse_Bronze.Lakehouse/Files/Cotacoes/Novos/"  
+destino = f"abfss://Medallion_BCB@onelake.dfs.fabric.microsoft.com/Lakehouse_Bronze.Lakehouse/Files/Cotacoes/Carregados/" 
 
 if not mssparkutils.fs.exists(destino):
     mssparkutils.fs.mkdirs(destino)
