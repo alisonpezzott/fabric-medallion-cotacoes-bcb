@@ -1,0 +1,54 @@
+table fact_cotacoes
+	lineageTag: 0bedb6af-0b63-4528-ba12-a34bdeb87e5a
+	sourceLineageTag: [dbo].[fact_cotacoes]
+
+	column Moeda
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 550086c7-529e-4972-a3e7-7904735c2cc8
+		sourceLineageTag: Moeda
+		summarizeBy: none
+		sourceColumn: Moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: date
+		lineageTag: 9d8d4b20-0984-474d-84bd-23838cd4c9ce
+		sourceLineageTag: Data
+		summarizeBy: none
+		sourceColumn: Data
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Cotacao
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 452a9e17-58e2-404a-a495-04eee7fcce6e
+		sourceLineageTag: Cotacao
+		summarizeBy: average
+		sourceColumn: Cotacao
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_cotacoes = entity
+		mode: directLake
+		source
+			entityName: fact_cotacoes
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

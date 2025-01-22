@@ -1,0 +1,4 @@
+relationship 74da6020-1d1d-9b75-2f63-445d65770004
+	fromColumn: fact_cotacoes.Moeda
+	toColumn: dim_moedas.Moeda
+
