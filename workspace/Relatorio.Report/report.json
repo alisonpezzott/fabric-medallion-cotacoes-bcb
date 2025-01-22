@@ -1,0 +1,51 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"visible\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "1f58a114c32b6c7bd176",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"735373a07a9b298a3cdb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":378.6061588330632,\"y\":66.38573743922204,\"z\":1,\"width\":882.7228525121556,\"height\":570.5024311183143,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"fact_cotacoes.Data\",\"active\":true}],\"Series\":[{\"queryRef\":\"fact_cotacoes.Moeda\"}],\"Y\":[{\"queryRef\":\"CountNonNull(fact_cotacoes.Cotacao)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact_cotacoes\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Data\"},\"Name\":\"fact_cotacoes.Data\",\"NativeReferenceName\":\"Data\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Moeda\"},\"Name\":\"fact_cotacoes.Moeda\",\"NativeReferenceName\":\"Moeda\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cotacao\"}},\"Function\":1},\"Name\":\"CountNonNull(fact_cotacoes.Cotacao)\",\"NativeReferenceName\":\"Média de Cotacao\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Data\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 570.50,
+          "width": 882.72,
+          "x": 378.61,
+          "y": 66.39,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"87b523803e81a76d01da\",\"layouts\":[{\"id\":0,\"position\":{\"x\":48.752025931928685,\"y\":66.38573743922204,\"z\":0,\"width\":280.064829821718,\"height\":338.15235008103724,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_moedas.MoedaNome\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_moedas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MoedaNome\"},\"Name\":\"dim_moedas.MoedaNome\",\"NativeReferenceName\":\"MoedaNome\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_moedas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MoedaNome\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Dólar dos Estados Unidos'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 338.15,
+          "width": 280.06,
+          "x": 48.75,
+          "y": 66.39,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

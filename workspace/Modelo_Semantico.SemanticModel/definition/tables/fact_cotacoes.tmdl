@@ -1,0 +1,57 @@
+table fact_cotacoes
+	lineageTag: 0240daba-c0a8-4ea6-9ac7-d0640443159b
+	sourceLineageTag: [dbo].[fact_cotacoes]
+
+	column Moeda
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2aa16dd4-9c2a-45fd-a5f8-efc243b476d1
+		sourceLineageTag: Moeda
+		summarizeBy: none
+		sourceColumn: Moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: date
+		lineageTag: c5c5bc21-34fa-4a32-90ef-3e3a9c0795bd
+		sourceLineageTag: Data
+		summarizeBy: none
+		sourceColumn: Data
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Cotacao
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		sourceProviderType: float
+		lineageTag: 2b713da0-d8e3-4f5a-b131-4f34118be339
+		sourceLineageTag: Cotacao
+		summarizeBy: none
+		sourceColumn: Cotacao
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition fact_cotacoes = entity
+		mode: directLake
+		source
+			entityName: fact_cotacoes
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
