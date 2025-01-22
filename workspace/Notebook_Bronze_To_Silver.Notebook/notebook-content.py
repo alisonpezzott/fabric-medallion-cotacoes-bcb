@@ -8,15 +8,15 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "1cc08abe-72d6-439a-b364-9aec95950c14",
+# META       "default_lakehouse": "9a6b8d46-0684-4a94-b242-f24bf9d41a82",
 # META       "default_lakehouse_name": "Lakehouse_Silver",
-# META       "default_lakehouse_workspace_id": "6d58cb94-6775-4d5b-9df0-58f6164a6339",
+# META       "default_lakehouse_workspace_id": "4bfae9a9-f6fb-439e-95c0-acae90efcb15",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "1cc08abe-72d6-439a-b364-9aec95950c14"
+# META           "id": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3"
 # META         },
 # META         {
-# META           "id": "ddf1ba0b-54d0-45f1-8f30-5eeffda938fb"
+# META           "id": "9a6b8d46-0684-4a94-b242-f24bf9d41a82"
 # META         }
 # META       ]
 # META     }
@@ -26,9 +26,9 @@
 # CELL ********************
 
 # Endereços dos lakehouses
-workspace_id = "6d58cb94-6775-4d5b-9df0-58f6164a6339"
-lake_bronze = "ddf1ba0b-54d0-45f1-8f30-5eeffda938fb"
-lake_silver = "1cc08abe-72d6-439a-b364-9aec95950c14"
+workspace_id = "Medallion_BCB"
+lake_bronze = "Lakehouse_Bronze.Lakehouse"
+lake_silver = "Lakehouse_Bronze.Lakehouse" 
 
 prefix = "abfss://"
 mid = "@onelake.dfs.fabric.microsoft.com/"
