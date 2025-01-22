@@ -17,6 +17,9 @@
 # META         },
 # META         {
 # META           "id": "460cfafc-e75c-4d4d-8b18-90e555066014"
+# META         },
+# META         {
+# META           "id": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3"
 # META         }
 # META       ]
 # META     }
@@ -27,10 +30,11 @@
 
 lakehouse_silver = 'Lakehouse_Silver'
 lakehouse_bronze = 'Lakehouse_Bronze'
+lakehouse_gold = 'Lakehouse_Gold'
 
 spark.sql(f"""
 -- Cria ou substitui a tabela Delta
-CREATE OR REPLACE TABLE fact_cotacoes
+CREATE OR REPLACE TABLE {lakehouse_gold}.fact_cotacoes
 USING DELTA
 AS
 
@@ -56,7 +60,7 @@ datas_periodo AS (
 -- Moedas distintas
 moedas AS (
   SELECT DISTINCT Moeda
-  FROM {lakehouse_bronze}.dim_moedas
+  FROM {lakehouse_gold}.dim_moedas
 ),
 
 -- Faz o plano cartesiano entre moedas e datas

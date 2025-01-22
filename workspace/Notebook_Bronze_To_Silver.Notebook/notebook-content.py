@@ -17,6 +17,9 @@
 # META         },
 # META         {
 # META           "id": "9a6b8d46-0684-4a94-b242-f24bf9d41a82"
+# META         },
+# META         {
+# META           "id": "460cfafc-e75c-4d4d-8b18-90e555066014"
 # META         }
 # META       ]
 # META     }
@@ -28,7 +31,7 @@
 # Endereços dos lakehouses
 workspace_id = "Medallion_BCB"
 lake_bronze = "Lakehouse_Bronze.Lakehouse"
-lake_silver = "Lakehouse_Bronze.Lakehouse" 
+lake_silver = "Lakehouse_Silver.Lakehouse" 
 
 prefix = "abfss://"
 mid = "@onelake.dfs.fabric.microsoft.com/"
@@ -76,7 +79,7 @@ display(df)
 # MAGIC %%sql
 # MAGIC 
 # MAGIC -- Cria uma tabela no lake se não existir
-# MAGIC CREATE TABLE IF NOT EXISTS cotacoes (
+# MAGIC CREATE TABLE IF NOT EXISTS Lakehouse_Silver.cotacoes (
 # MAGIC     Cotacao DOUBLE,
 # MAGIC     Data DATE,
 # MAGIC     Moeda STRING
@@ -98,7 +101,7 @@ display(df)
 df.createOrReplaceTempView("df_novos")
 
 spark.sql("""
-    MERGE INTO cotacoes AS e
+    MERGE INTO Lakehouse_Silver.cotacoes AS e
     USING (
         SELECT
             Cotacao,
@@ -125,7 +128,7 @@ spark.sql("""
 
 # MAGIC %%sql
 # MAGIC -- Contagem de linhas
-# MAGIC SELECT COUNT(*) FROM cotacoes
+# MAGIC SELECT COUNT(*) FROM Lakehouse_Silver.cotacoes
 
 # METADATA ********************
 
@@ -139,9 +142,6 @@ spark.sql("""
 # Movimentação dos arquivos parquet da pasta Novos para Carregados
 
 from notebookutils import mssparkutils
-
-# destino = path_bronze_files_novos 
-# origem = path_bronze_files_carregados
 
 origem = path_bronze_files_novos 
 destino = path_bronze_files_carregados

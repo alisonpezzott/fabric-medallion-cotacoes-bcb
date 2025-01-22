@@ -10,7 +10,18 @@
 # META     "lakehouse": {
 # META       "default_lakehouse": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3",
 # META       "default_lakehouse_name": "Lakehouse_Bronze",
-# META       "default_lakehouse_workspace_id": "4bfae9a9-f6fb-439e-95c0-acae90efcb15"
+# META       "default_lakehouse_workspace_id": "4bfae9a9-f6fb-439e-95c0-acae90efcb15",
+# META       "known_lakehouses": [
+# META         {
+# META           "id": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3"
+# META         },
+# META         {
+# META           "id": "9a6b8d46-0684-4a94-b242-f24bf9d41a82"
+# META         },
+# META         {
+# META           "id": "460cfafc-e75c-4d4d-8b18-90e555066014"
+# META         }
+# META       ]
 # META     }
 # META   }
 # META }
@@ -33,7 +44,9 @@ from datetime import *
 
 # CELL ********************
 
-df_moedas = spark.sql("SELECT Moeda FROM dim_moedas")
+# Lista das moedas
+path_dim_moedas = "Lakehouse_Gold.dim_moedas" 
+df_moedas = spark.sql(f"SELECT Moeda FROM {path_dim_moedas}") 
 lista_moedas = [row['Moeda'] for row in df_moedas.collect()]
 print(lista_moedas)
 
