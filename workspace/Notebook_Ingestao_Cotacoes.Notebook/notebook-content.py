@@ -8,18 +8,18 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3",
+# META       "default_lakehouse": "b8fdb39a-0195-4c04-acc0-c8748dd9395f",
 # META       "default_lakehouse_name": "Lakehouse_Bronze",
-# META       "default_lakehouse_workspace_id": "4bfae9a9-f6fb-439e-95c0-acae90efcb15",
+# META       "default_lakehouse_workspace_id": "43fc4b91-88cc-4d70-a8ad-8cba40bbf749",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "f2573e5a-e241-49e9-bed3-5bbda0f1abc3"
+# META           "id": "b8fdb39a-0195-4c04-acc0-c8748dd9395f"
 # META         },
 # META         {
-# META           "id": "9a6b8d46-0684-4a94-b242-f24bf9d41a82"
+# META           "id": "65813ff8-3f08-4f1d-830c-63609257a8da"
 # META         },
 # META         {
-# META           "id": "460cfafc-e75c-4d4d-8b18-90e555066014"
+# META           "id": "9da8f864-fec9-4557-9ac5-06ee7c35f411"
 # META         }
 # META       ]
 # META     }
@@ -45,8 +45,7 @@ from datetime import *
 # CELL ********************
 
 # Lista das moedas
-path_dim_moedas = "Lakehouse_Gold.dim_moedas" 
-df_moedas = spark.sql(f"SELECT Moeda FROM {path_dim_moedas}") 
+df_moedas = spark.sql("SELECT * FROM Lakehouse_Gold.dim_moedas")
 lista_moedas = [row['Moeda'] for row in df_moedas.collect()]
 print(lista_moedas)
 
@@ -100,6 +99,7 @@ for moeda in lista_moedas:
     data_inicial_path = datetime.strptime(data_inicial, "%m-%d-%Y").strftime("%Y%m%d")
     data_final_path = datetime.strptime(data_final, "%m-%d-%Y").strftime("%Y%m%d")
 
+    # Certifique-se que o Lakehouse_Bronze é o padrão deste notebook
     path = (
         f"Files/Cotacoes/Novos/"
         f"{moeda}-"
